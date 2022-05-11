@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Homepage - REST API for wttr.in database</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 10px;
+  text-indent: 30%;
+  text-align: left;
+  background: #1abc9c;
+  color: white;
+}
+
+.header a {
+color: #333
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  display: block;
+  color: white;
+  text-indent: 30%;
+  text-align: none;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead
+of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other
+instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar {
+    float: none;
+    width: 100%;
+  }
+}
+
+li{
+    margin-top: 0px;
+    padding: 10px;
+}
+
+/* Styling the table */
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #1abc9c;
+}
+td {
+text-align: left;
+text-indent: 10%;
+padding: 0.5%;
+}
+</style>
+</head>
+<body>
+
+<a href="http://127.0.0.1:5000" style="text-decoration: none">
+<div class="header">
+  <h1 style="color: #333">Accessing Weather Archive: </h1>
+  <h2>A REST API for retrieving aggregated weather information from database.</h2>
+  <h4> Data crawled from <a href="https://wttr.in/" target="_blank">'https://wttr.in/'</a></h4>
+</div>
+</a>
+
+<div class="navbar">
+    <h2>API ENDPOINTS LINKS</h2>
+</div>
+
+<div class="row">
+  <div class="side">
+  <h2>Instructions</h2>
+      <ol>
+          <li>Click on a desired endpoint link to display the respective aggregated data.</li>
+          <li>A dashboard is provided at each endpoint. Change the value of the parameter(s) below:
+              <ul style="list-style-type:disc">
+                   <li>date=2020-04-01</li>
+                   <li>dates=2022-04-01,2022-04-02,2022-04-03</li>
+                   <li>start_date=2022-04-01</li>
+                   <li>end_date=2022-04-02</li>
+                   <li>data_limit=5</li>
+              </ul>
+          </li>
+          <li>
+              You can also copy and paste the links into your favourite browser or API platform such as Postman Client.
+          </li>
+      </ol>
+  </div>
+  <div class="main">
+
+<h2 class="city">Access aggregated data for a single date.</h2>
+<p>
+    <a href="http://127.0.0.1:5000/api/v1/resources/single_date_temp_wind">
+        http://127.0.0.1:5000/api/v1/resources/single_date_temp_wind?date=2022-04-01</a>
+</p>
+
+<h2 class="city">Access aggregated data for multiple dates.</h2>
+<p>
+    <a href="http://127.0.0.1:5000/api/v1/resources/multi_dates_temp_wind">
+        http://127.0.0.1:5000/api/v1/resources/multi_dates_temp_wind?dates=2022-04-01,2022-04-02,2022-04-03</a>
+</p>
+
+<h2 class="city">Access aggregated data for interval dates.</h2>
+<p>
+    <a href="http://127.0.0.1:5000/api/v1/resources/interval_dates_temp_wind">
+        http://127.0.0.1:5000/api/v1/resources/interval_dates_temp_wind?start_date=2022-04-01&end_date=2022-04-02</a>
+</p>
+
+<h2 class="city">View a portion/percentage of the entire database records.</h2>
+<p>
+    <a href="http://127.0.0.1:5000/api/v1/resources/view_database">
+        http://127.0.0.1:5000/api/v1/resources/view_database?data_limit=5</a>
+</p>
+
+  </div>
+</div>
+</body>
+</html>
+

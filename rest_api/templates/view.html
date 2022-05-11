@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>View database</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 10px;
+  text-indent: 30%;
+  text-align: left;
+  background: #1abc9c;
+  color: white;
+}
+
+.header a {
+color: #333
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  display: block;
+  color: white;
+  text-indent: 30%;
+  text-align: none;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead
+of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other
+instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar {
+    float: none;
+    width: 100%;
+  }
+}
+
+li{
+    margin-top: 0px;
+    padding: 10px;
+}
+
+
+/* Styling the table */
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+th {
+text-align: left;
+text-indent: 10%;
+}
+
+th, td {
+  background-color: #1abc9c;
+}
+td {
+text-align: left;
+text-indent: 10%;
+padding: 0.5%;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+}
+
+input[type=submit] {
+  background-color: #0000CD;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+input[type=submit]:hover {
+  background-color: #191970;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<a href="http://127.0.0.1:5000" style="text-decoration: none">
+<div class="header">
+  <h1 style="color: #333">Accessing Weather Archive: </h1>
+  <h2>A REST API for retrieving aggregated weather information from database.</h2>
+  <h4> Data crawled from <a href="https://wttr.in/" target="_blank">'https://wttr.in/'</a></h4>
+</div>
+</a>
+
+
+<div class="navbar">
+  <h2>A {{elements[1]}} PERCENT DISPLAY OF THE ENTIRE WEATHER ARCHIVE</h2>
+</div>
+
+<div class="row">
+  <div class="side">
+
+ <h2>Instructions</h2>
+      <ol>
+          <li>
+              Note that the database records are listed as a percentage of the total database records.
+              The page by default displays 5% of the latest entries.
+          </li>
+          <li>
+              To view a portion or the entire database starting from the <mark>latest entries</mark>, enter a
+              <mark>positive value</mark> in the input box and send or press enter. Example 'data_limit=<mark>5</mark>'
+          </li>
+          <li>
+              To view a portion or the entire database starting from the <mark>oldest entries</mark>, enter a
+              <mark>negative value</mark> in the input box and send or press enter. Example 'data_limit=<mark>-5</mark>'
+          </li>
+          <li>
+              Enter any integer from -100 to 100. Integers less/greater than -100/100 would be set to -100/100
+              respectively. Floats/decimals/fractions, letters/alphabets/symbols are not allowed.
+          </li>
+          <li>
+            <a href="http://127.0.0.1:5000">Click here</a> or on any active area in the header to return to the homepage
+            or main menu.
+          </li>
+      </ol>
+ </div>
+  <div class="main">
+   <form method="POST">
+       <table style="width:100%">
+          <tr>
+            <th>Key<br></th>
+            <th>Value<br></th>
+            <th>Action<br></th>
+          </tr>
+          <tr>
+            <td>data_limit<br></td>
+            <td>
+                <input type="number" name="data_limit" required>
+                &ensp;<small>Enter any integer from 1 to 100 or from -1 to -100.</small><br>
+            </td>
+            <td><input type="submit" value="Send"><br></td>
+          </tr>
+        </table>
+   </form>
+
+    <h2>A LISTING OF {{elements[1]}} PERCENT OF THE ENTIRE DATABASE: {{elements[3]}} OUT OF {{elements[2]}} RECORDS</h2>
+
+      <ul>
+           {% for element in elements[0] %}
+                <li>{{ element }}</li>
+           {% endfor %}
+      </ul>
+
+  </div>
+</div>
+</body>
+</html>
+
+
+</html>
