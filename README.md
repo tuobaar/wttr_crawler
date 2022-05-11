@@ -33,7 +33,7 @@ The database 'weather_archive.db' contains a table 'weather' with the following 
 
 
 ## Installation:
-1. Click on the [download](https://github.com/tuobaar/wttr_crawler/archive/refs/heads/main.zip) button/symbol on main project page on GitLab and download zip file.
+1. Click on the [download](https://github.com/tuobaar/wttr_crawler/archive/refs/heads/main.zip) button/symbol on main project page on GitHub and download zip file.
 2. Extract the downloaded zip file to a preferred location on your computer.
 3. Open `command console/prompt` or `terminal`, navigate to the location of the extracted folder/files and install all packages in `requirements.txt` using pip as follows:
 
